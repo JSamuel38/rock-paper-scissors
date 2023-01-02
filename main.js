@@ -52,7 +52,6 @@ function game() {
         playerSelection = prompt("Enter your choice: ");
         computerSelection = getComputerChoice();
         let result = playRound(playerSelection, computerSelection);
-        console.log(computerSelection);
         console.log(result);
         if (result == "You win!") {
             playerScore++;
