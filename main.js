@@ -42,42 +42,55 @@ function playRound(playerSelection, computerSelection) {
     return "It's a tie!";
 }
 
-function game() {
-    let playerSelection;
-    let computerSelection;
-    let playerScore = 0;
-    let computerScore = 0;
-
-    playerSelection = prompt("Enter your choice: ");
-    computerSelection = getComputerChoice();
-    let result = playRound(playerSelection, computerSelection);
-    console.log(result);
-    if (result == "You win!") {
-        playerScore++;
-    }
-    if (result == "You lose!") {
-        computerScore++;
-    }
-    if (result == "Please enter rock, paper, or scissors") {
-        i--;
-    }
-
-    console.log(`Player's score: ${playerScore}\nComputer's score: ${computerScore}`);
-    if (playerScore > computerScore) {
-        console.log("You win!");
-    } else if (playerScore < computerScore) {
-        console.log("You lose!");
-    } else {
-        console.log("It's a tie!");
-    }
-}
-
 const buttonContainer = document.querySelector(".container");
 const buttons = buttonContainer.querySelectorAll("button");
 
+const scoreContainer = document.querySelector(".scoreContainer");
+//Player's score
+const playerScore = document.querySelector(".playerScore");
+let playerTotal = 0;
+playerScore.innerText = playerTotal;
+//Computer's score
+const computerScore = document.querySelector(".computerScore");
+let computerTotal = 0;
+computerScore.innerText = computerTotal;
+
+const scoreText = document.querySelector(".scoreText");
+//Changes score each time button is clicked
+//Once score is 5, winner is announced
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
         let playerChoice = button.innerText;
-        playRound(playerChoice, getComputerChoice());
+        let result = playRound(playerChoice, getComputerChoice());
+        scoreText.innerText = result;
+        if (result == "You win!") {                     //Check who wins round
+            playerScore.innerText = ++playerTotal;      //Increment score
+        }
+        if (result == "You lose!") {
+            computerScore.innerText = ++computerTotal;
+        }
+        //Check who wins
+        if (playerTotal >= 5) {
+            scoreText.innerText = "You Won!"
+            playerTotal = 0;
+            computerTotal = 0;
+            buttons.forEach((e) => { e.disabled = true });
+            setTimeout(() => {          //Disable button and reset scores
+                playerScore.innerText = playerTotal;
+                computerScore.innerText = computerTotal;
+                buttons.forEach((e) => { e.disabled = false });
+            }, 1000);
+        }
+        if (computerTotal >= 5) {
+            scoreText.innerText = "You lost!\nComputer Won!"
+            playerTotal = 0;
+            computerTotal = 0;
+            buttons.forEach((e) => { e.disabled = true });
+            setTimeout(() => {          //Disable every button and reset scores
+                playerScore.innerText = playerTotal;
+                computerScore.innerText = computerTotal;
+                buttons.forEach((e) => { e.disabled = false });
+            }, 1000);
+        }
     });
 });
