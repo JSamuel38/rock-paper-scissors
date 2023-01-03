@@ -27,7 +27,7 @@ function playRound(playerSelection, computerSelection) {
                 return "You lose!";
             }
             break;
-        
+
         case "scissors":
             if (computerSelection === "paper") {
                 return "You win!";
@@ -35,7 +35,7 @@ function playRound(playerSelection, computerSelection) {
                 return "You lose!";
             }
             break;
-        
+
         default:
             return "Please enter rock, paper, or scissors";
     }
@@ -48,20 +48,18 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
 
-    for (let i = 0; i < 5; i++) {
-        playerSelection = prompt("Enter your choice: ");
-        computerSelection = getComputerChoice();
-        let result = playRound(playerSelection, computerSelection);
-        console.log(result);
-        if (result == "You win!") {
-            playerScore++;
-        } 
-        if (result == "You lose!") {
-            computerScore++;
-        }
-        if (result == "Please enter rock, paper, or scissors") {
-            i--;
-        }
+    playerSelection = prompt("Enter your choice: ");
+    computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
+    console.log(result);
+    if (result == "You win!") {
+        playerScore++;
+    }
+    if (result == "You lose!") {
+        computerScore++;
+    }
+    if (result == "Please enter rock, paper, or scissors") {
+        i--;
     }
 
     console.log(`Player's score: ${playerScore}\nComputer's score: ${computerScore}`);
@@ -73,3 +71,13 @@ function game() {
         console.log("It's a tie!");
     }
 }
+
+const buttonContainer = document.querySelector(".container");
+const buttons = buttonContainer.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let playerChoice = button.innerText;
+        playRound(playerChoice, getComputerChoice());
+    });
+});
