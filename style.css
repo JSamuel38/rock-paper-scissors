@@ -49,5 +49,9 @@ body {
     border-width: 0.3rem;
 }
 
+.container button:active {
+    background-color: #171640;
+}
+
 .scoreText {   
 }
