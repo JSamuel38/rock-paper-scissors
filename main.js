@@ -1,6 +1,6 @@
 function getComputerChoice() {
-    let rand = Math.floor(Math.random() * 3);
-    if (rand === 0) {
+    let rand = Math.floor(Math.random() * 3);  //Random number between 0 and 2
+    if (rand === 0) {                          //which determines choice
         return "rock";
     } else if (rand === 1) {
         return "paper";
@@ -8,7 +8,7 @@ function getComputerChoice() {
         return "scissors";
     }
 }
-
+//Checks who wins the round, depending on inputs
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     switch (playerSelection) {
