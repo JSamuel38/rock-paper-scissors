@@ -1,6 +1,12 @@
+body {
+    background-color: #010024;
+    color: #eaeaea;
+}
+
 .scoreContainer {
     align-items: center;
     display: flex;
+    gap: 9rem;
     justify-content: center;
     margin-bottom: 2rem;
     margin-top: 20%;
@@ -10,7 +16,6 @@
 .playerScore, .computerScore {
     font-size: 2.5rem;
     font-weight: bold;
-    width: 15%;
 }
 
 .container {
@@ -18,9 +23,17 @@
     display: flex;
     gap: 5rem;
     justify-content: center;
+    margin-top: 7.5%;
 }
 
 .container button {
+    background-color: #010024;
+    border: solid;
+    border-color: #eaeaea;
+    border-radius: 15%;
+    color: #eaeaea;
+    height: 6rem;
+    width: 6rem;
 }
 
 .scoreTextContainer {
@@ -30,5 +43,11 @@
     margin-top: 2rem;
 }
 
-.scoreText {
+.container button:hover {
+    background-color: #131236;
+    border-color: #fff;
+    border-width: 0.3rem;
+}
+
+.scoreText {   
 }
