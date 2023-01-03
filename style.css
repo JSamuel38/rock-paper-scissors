@@ -10,12 +10,32 @@ h1 {
     text-align: center;
 }
 
+.scoreTag {
+    align-items: center;
+    display: flex;
+    gap: 12rem;
+    margin-top: 4rem;
+    justify-content: space-around;
+}
+
+.scoreTag p {
+    font-size: 1.5rem;
+}
+
+#p1 {
+    margin-left: 34.375rem;
+    padding-right: 1rem;
+}
+
+#p2 {
+    padding-right: 33.125rem;
+}
+
 .scoreContainer {
     align-items: center;
     display: flex;
     gap: 9rem;
     justify-content: center;
-    margin-top: 7.5%;
     text-align: center;
 }
 
